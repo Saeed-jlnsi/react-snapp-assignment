@@ -1,15 +1,11 @@
-import { Grid } from '@mui/material';
+import { Container } from '@mui/material';
 
 function Profile () {
     return (
-        <Grid container spacing={2}>
-            <Grid item>
-                <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem </p>
-            </Grid>
-            <Grid item>
+        <Container maxWidth="lg">
             <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem </p>
-            </Grid>
-        </Grid>
+            <p>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem </p>
+        </Container>
     )
 }
 
