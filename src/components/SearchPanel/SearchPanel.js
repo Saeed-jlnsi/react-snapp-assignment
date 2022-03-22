@@ -1,13 +1,13 @@
 import Accordion from '@mui/material/Accordion';
 import {AccordionSummary, AccordionDetails, Typography, Grid,
-TextField, Switch, FormGroup, FormControlLabel, Button, Container  } from '@mui/material';
+TextField, Switch, FormGroup, FormControlLabel, Button  } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 
 function SearchPanel() {
     return (
-        <Accordion>
+        <Accordion sx={{mx: 6}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -18,18 +18,18 @@ function SearchPanel() {
         <AccordionDetails>
           <form >
             <Grid container spacing={2} sx={{mb: 6}}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={6}>
                     <TextField fullWidth id="outlined-basic1" label="Search by first name" variant="outlined" />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={6}>
                     <TextField fullWidth id="outlined-basic2" label="Search by last name" variant="outlined" />
 
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={6}>
                     <TextField fullWidth id="outlined-basic3" label="Search by email" variant="outlined" />
 
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} sm={6}>
                     <FormGroup>
                         <FormControlLabel control={<Switch defaultChecked />} label="Filter Banned Passengers" />
                     </FormGroup>
