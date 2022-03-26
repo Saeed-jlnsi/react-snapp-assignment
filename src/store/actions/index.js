@@ -1,0 +1,3 @@
+export {
+    initPassengers
+} from './passengers';
