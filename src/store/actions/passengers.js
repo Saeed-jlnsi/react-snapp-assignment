@@ -11,9 +11,22 @@ export const initPassengers = () => {
     return dispatch => {
         api.get('/passenger/')
             .then(response => {
-                console.log("zzz", response.data.items)
                 dispatch(setPassengers(response.data.items))
             })
 
+    }
+}
+
+export const setSinglePassenger = (passenger) => ({
+    type: actionTypes.SET_SINGLE_PASSENGER,
+    passenger: passenger
+})
+
+export const initSinglePassenger = (id) => {
+    return dispatch => {
+        api.get('/passenger/' + id)
+            .then(response => {
+                dispatch(setSinglePassenger(response.data))
+            })
     }
 }

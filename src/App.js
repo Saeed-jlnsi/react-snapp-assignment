@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route exact path="/" />
           <Route path="passengers" element={<Passengers/>} />
-          <Route path="profile" element={<Profile/>}/>
+          <Route path="profile/:id" element={<Profile/>}/>
         </Routes>
       </main>
     </div>

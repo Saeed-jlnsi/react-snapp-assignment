@@ -1,7 +1,8 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-    passengers: []
+    passengers: [],
+    passenger: {}
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 passengers: action.passengers
             };
+        case actionTypes.SET_SINGLE_PASSENGER:
+            return {
+                ...state,
+                passenger: action.passenger
+            }    
         default:
             return state;
     }

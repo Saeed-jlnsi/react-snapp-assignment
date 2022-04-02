@@ -1,5 +1,8 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Card } from '@mui/material';
+
 
 const columns = [
   { field: 'first_name', headerName: 'First Name', flex: 1},
@@ -9,14 +12,16 @@ const columns = [
   { field: 'balance', headerName: 'Balance($)', flex: 1},
   { field: 'ride_status', headerName: 'Ride Status', flex: 1},
   { field: 'banned', headerName: 'Banned', flex: 1},
-  { field: 'createdAt', headerName: 'Registration Time', flex: 1},
+  { field: 'createdAt', headerName: 'Registration Time', width: 150},
   { 
     headerName: 'Actions',
     field: 'actions',
     flex: 1,
-    renderCell: () => (
+    renderCell: ({id}) => (
         <strong>
           <Button
+            component={Link}
+            to={`/profile/${id}`}
             variant="contained"
             color="secondary"
             size="small"
@@ -29,12 +34,12 @@ const columns = [
 ]; 
 
 function PassengersTable(props) {
-    
-    return (
-        <div style={{ height: '700px' }}>
-            <DataGrid rows={props.passengersList} columns={columns} />
-        </div>
-    )
+
+  return (
+      <Card style={{ height: '700px', padding: '20px', marginTop: '20px' }}>
+          <DataGrid rows={props.passengersList} columns={columns} />
+      </Card>
+  )
 }
 
 export default PassengersTable;

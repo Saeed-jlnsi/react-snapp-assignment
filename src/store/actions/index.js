@@ -1,3 +1,4 @@
 export {
-    initPassengers
+    initPassengers,
+    initSinglePassenger
 } from './passengers';

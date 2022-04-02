@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 function Passengers (props) {
 
     useEffect(() => {
-        props.onInitPassenger();
+        props.onInitPassengers();
     }, []);
     
     return (
@@ -27,7 +27,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onInitPassenger: () => dispatch(actions.initPassengers())
+        onInitPassengers: () => dispatch(actions.initPassengers())
     }
 }
   
