@@ -2,7 +2,14 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
     passengers: [],
-    passenger: {}
+    passenger: {
+        first_name: "",
+        last_name: "",
+        email: "",
+        gender: "",
+        notes: "",
+        phone: ""
+    }
 };
 
 const reducer = (state = initialState, action) => {

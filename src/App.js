@@ -1,10 +1,12 @@
 import './App.css';
 import { AppBar, Typography, Toolbar, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Routes, Route } from 'react-router-dom';
 import Passengers from "./containers/Passengers/Passengers";
 import Profile from "./containers/Profile/Profile";
-
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
 
 
 function App() {

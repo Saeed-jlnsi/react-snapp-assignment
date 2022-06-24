@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { Card, Grid, TextField, Button, CardHeader, Avatar } from '@mui/material';
 import './profile-card.css';
 
-function ProfileCard(props) {
-    const { formState, setFormState } = useState(false);
+function ProfileCard({passenger, onChangeInput}) {
+    // console.log("ind", passenger.passenger);
+
+    // TO ACTIVE OR DEACTIVE EDIT
+    // const { formState, setFormState } = useState(false);
+
     return (
         <Card style={{ padding: '20px' }} sx={{ width: 700 }}>
             <CardHeader
@@ -16,29 +20,27 @@ function ProfileCard(props) {
                     ></img>
                 </Avatar>
                 }
-                title={`Passenger ID: ${props.passenger.id}`}
-                subheader={`Email: ${props.passenger.email}`}
+                title={`Passenger ID: ${passenger.id}`}
+                subheader={`Email: ${passenger.email}`}
             />
             <form >
               <Grid container spacing={2} sx={{mb: 6}}>
                   <Grid item xs={12} sm={6}>
                       <TextField 
-                        value={props.passenger.first_name} 
-                        onChange={() => {}}
-                        disabled={formState}
+                        value={passenger.first_name} 
+                        onChange={onChangeInput}
                         fullWidth 
-                        id="outlined-basic1" 
+                        id="first_name" 
                         label="First Name" 
                         variant="outlined" 
                         />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                       <TextField 
-                        value={props.passenger.last_name} 
-                        onChange={() => {}}
-                        disabled={formState}
+                        value={passenger.last_name} 
+                        onChange={onChangeInput}
                         fullWidth 
-                        id="outlined-basic2" 
+                        id="last_name" 
                         label="Last Name" 
                         variant="outlined" 
                         />
@@ -46,11 +48,11 @@ function ProfileCard(props) {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                       <TextField 
-                        value={props.passenger.phone} 
-                        onChange={() => {}}
-                        disabled={formState}
+                        value={passenger.phone} 
+                        // value={passenger.number_masked ? passenger.phone : passenger.phone.slice(0, 4) + "********"} 
+                        onChange={onChangeInput}
                         fullWidth 
-                        id="outlined-basic3" 
+                        id="phone" 
                         label="Phone" 
                         variant="outlined" 
                         />
@@ -58,31 +60,19 @@ function ProfileCard(props) {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                       <TextField
-                        value={props.passenger.gender} 
-                        onChange={() => {}} 
-                        disabled={formState}
+                        value={passenger.gender} 
+                        onChange={onChangeInput} 
                         fullWidth 
-                        id="outlined-basic3" 
+                        id="gender" 
                         label="Gender" 
                         variant="outlined" 
                         />
 
                   </Grid>
-                  <Grid item xs={12} sm={6}>
-                      <TextField 
-                        value={props.passenger.number_masked} 
-                        onChange={() => {}} 
-                        disabled={formState}
-                        fullWidth 
-                        id="outlined-basic3" 
-                        label="Number Masked" 
-                        variant="outlined" 
-                        />
-                  </Grid>
                   <Grid item xs={12}>
                     <TextField
-                        disabled={formState}
-                        id="outlined-multiline-static"
+                        value={passenger.note }
+                        id="notes"
                         label="Notes"
                         fullWidth
                         multiline
