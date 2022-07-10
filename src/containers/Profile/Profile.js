@@ -1,67 +1,70 @@
-import React, {useEffect, useState} from 'react';
-import { Container } from '@mui/material';
-import { connect } from 'react-redux';
-import ProfileCard from '../../components/ProfileCard/ProfileCard';
-import * as actions from '../../store/actions/index';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Container } from "@mui/material";
+import { connect } from "react-redux";
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import * as actions from "../../store/actions/index";
+import { useParams,useNavigate  } from "react-router-dom";
 
+function Profile(props) {
 
-function Profile (props) {
-    const [formState, setFormState] = useState({
-        first_name: "",
-        last_name: "",
-        email: "",
-        gender: "",
-        notes: "",
-        phone: ""
-    });
+    let navigate = useNavigate();
 
-    const { id } = useParams();
+  const [formState, setFormState] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    gender: "",
+    notes: "",
+    phone: "",
+  });
 
-    
-    useEffect(() => {
-        props.onInintSinglePassenger(id);
-        // console.log("useEffect")
-     }, []);
+  const { id } = useParams();
 
-    useEffect(() => {
-        setFormState({...props.passenger});
-        console.log("props useEffect", formState)
-    }, [props.passenger])
+  useEffect(() => {
+    props.onInintSinglePassenger(id);
+  }, []);
 
-    const formData = {
-        first_name: "",
-        last_name: "",
-        email: "",
-        gender: "",
-        notes: "",
-        phone: ""
-    };
+  useEffect(() => {
+    setFormState({ ...props.passenger });
+  }, [props.passenger]);
 
-    const inputChangeHandler = (event) => {
-        formData[event.target.id] = event.target.value;
-        setFormState(formData)
-    }
-    
-    console.log("rerendered");
+  const inputChangeHandler = (event) => {
+    const { id, value } = event.target;
+    setFormState({ ...formState, [id]: value });
+  };
 
-    return (
-        <Container maxWidth="lg" sx={{p: 2, display: 'flex', justifyContent: 'center'}}>
-            <ProfileCard passenger={formState} onChangeInput={inputChangeHandler} />
-        </Container>
-    )
+  const updatePassenger = () => {
+    console.log("like update api calls", { id, formState });
+    // props.onInintSinglePassenger();
+    // navigate("/passengers");
+
+  };
+
+  return (
+    <Container
+      maxWidth="lg"
+      sx={{ p: 2, display: "flex", justifyContent: "center" }}
+    >
+      <ProfileCard
+        passenger={formState}
+        onChangeInput={inputChangeHandler}
+        updatePassenger={updatePassenger}
+      />
+    </Container>
+  );
 }
 
-const mapStateToProps = state => {
-    return {
-        passenger: state.passengers.passenger
-    }
-}
+const mapStateToProps = (state) => {
+  return {
+    passenger: state.passengers.passenger,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onInintSinglePassenger: id => dispatch(actions.initSinglePassenger(id))
-    }
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onInintSinglePassenger: (id) => dispatch(actions.initSinglePassenger(id)),
+    onInitPassengers: () => dispatch(actions.initPassengers()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
