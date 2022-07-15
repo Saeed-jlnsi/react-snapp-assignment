@@ -2,7 +2,8 @@ import React , { useEffect } from "react";
 import {
   Routes,
   Route,
-  useNavigate
+  useNavigate,
+  useLocation
 } from "react-router-dom";
 import './App.css';
 import { AppBar, Typography, Toolbar, IconButton } from '@mui/material';
@@ -13,13 +14,16 @@ import Profile from "./containers/Profile/Profile";
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     navigateToPassengers();
   }, []);
 
   const navigateToPassengers = () => {
-    navigate("/passengers");
+    if(location.pathname === '/') {
+      navigate("/passengers");
+    }
   }
   return (
     <div className="App">
