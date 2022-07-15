@@ -7,7 +7,7 @@ import { useParams,useNavigate  } from "react-router-dom";
 
 function Profile(props) {
 
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
   const [formState, setFormState] = useState({
     first_name: "",

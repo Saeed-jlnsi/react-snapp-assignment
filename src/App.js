@@ -1,15 +1,26 @@
+import React , { useEffect } from "react";
+import {
+  Routes,
+  Route,
+  useNavigate
+} from "react-router-dom";
 import './App.css';
 import { AppBar, Typography, Toolbar, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Passengers from "./containers/Passengers/Passengers";
 import Profile from "./containers/Profile/Profile";
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
 
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigateToPassengers();
+  }, []);
+
+  const navigateToPassengers = () => {
+    navigate("/passengers");
+  }
   return (
     <div className="App">
       <AppBar position="static" color="primary">

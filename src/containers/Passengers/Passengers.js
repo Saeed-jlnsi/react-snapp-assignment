@@ -6,11 +6,11 @@ import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 
 function Passengers (props) {
-
+    
     useEffect(() => {
         props.onInitPassengers();
     }, []);
-    
+
     return (
         <Container maxWidth="lg" sx={{p: 2}}>
             <SearchPanel />
