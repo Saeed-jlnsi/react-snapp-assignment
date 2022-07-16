@@ -23,7 +23,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 passenger: action.passenger
-            }    
+            };               
         default:
             return state;
     }

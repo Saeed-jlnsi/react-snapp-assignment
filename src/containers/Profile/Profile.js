@@ -43,6 +43,14 @@ function Profile(props) {
 
   };
 
+  const deletePassenger = () => {
+    props.onDeleteSinglePassenger(id)
+      .then(response => {
+        alert("User is Successfully deleted");
+        navigate("/passengers");
+      });
+  }
+
   return (
     <Container
       maxWidth="lg"
@@ -52,6 +60,7 @@ function Profile(props) {
         passenger={formState}
         onChangeInput={inputChangeHandler}
         updatePassenger={editPassenger}
+        onDeletePassenger={deletePassenger}
       />
     </Container>
   );
@@ -67,7 +76,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onInintSinglePassenger: (id, passengerData) => dispatch(actions.initSinglePassenger(id, passengerData)),
     onInitPassengers: () => dispatch(actions.initPassengers()),
-    onUpateSinglePassenger: (id, passengerData) => dispatch(actions.updateSinglePassenger(id, passengerData))
+    onUpateSinglePassenger: (id, passengerData) => dispatch(actions.updateSinglePassenger(id, passengerData)),
+    onDeleteSinglePassenger: (id) => dispatch(actions.deleteSinglePassenger(id))
   };
 };
 

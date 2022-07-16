@@ -1,5 +1,6 @@
 export {
     initPassengers,
     initSinglePassenger,
-    updateSinglePassenger
+    updateSinglePassenger,
+    deleteSinglePassenger
 } from './passengers';

@@ -44,7 +44,6 @@ export const initSinglePassenger = (id, payload = {}) => {
 export const updateSinglePassenger = (id, payload) => {
   return (dispatch) => {
     if (id) {
-      console.log(id, payload);
       api.patch("/passenger/" + id, payload).then((response) => {
         dispatch(setSinglePassenger(response.data));
       });
@@ -62,3 +61,12 @@ export const updateSinglePassenger = (id, payload) => {
     }
   };
 };
+
+export const deleteSinglePassenger = (id) => {
+  return (dispatch) => {
+    if (id) {
+      return api.delete("/passenger/" + id)
+    }
+  };
+};
+

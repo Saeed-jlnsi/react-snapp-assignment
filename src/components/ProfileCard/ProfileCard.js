@@ -9,7 +9,7 @@ import {
 import "./profile-card.css";
 
 function ProfileCard(props) {
-  const { passenger, onChangeInput, updatePassenger } = props;
+  const { passenger, onChangeInput, updatePassenger, onDeletePassenger } = props;
 
   const handleSubmit = (event) => {
     event.preventDefault() ;
@@ -83,7 +83,6 @@ function ProfileCard(props) {
               fullWidth
               multiline
               rows={4}
-              defaultValue="Write something here..."
             />
           </Grid>
         </Grid>
@@ -91,7 +90,7 @@ function ProfileCard(props) {
           <Button variant="contained" sx={{ mr: 2 }} type="submit">
             Edit Passenger
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={onDeletePassenger}>
             Delete Passenger
           </Button>
         </Grid>
