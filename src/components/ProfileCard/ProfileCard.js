@@ -76,7 +76,8 @@ function ProfileCard(props) {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              value={passenger.note}
+              value={passenger.notes}
+              onChange={onChangeInput}
               id="notes"
               label="Notes"
               fullWidth

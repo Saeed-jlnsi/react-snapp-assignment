@@ -25,7 +25,8 @@ function Profile(props) {
   }, []);
 
   useEffect(() => {
-    setFormState({ ...props.passenger });
+    const {first_name ,last_name ,email ,gender, notes, phone} = props.passenger;
+    setFormState({first_name, last_name, email, gender, notes, phone});
   }, [props.passenger]);
 
   const inputChangeHandler = (event) => {
@@ -34,13 +35,11 @@ function Profile(props) {
       setFormState(prevState => {
         return {...prevState, [id]: value}
     })
+   
   }
   
-
-  const updatePassenger = () => {
-    console.log("like update api calls", { id, formState });
-    // props.onInintSinglePassenger();
-    // navigate("/passengers");
+  const editPassenger = () => {
+    props.onUpateSinglePassenger(id, formState);
 
   };
 
@@ -52,7 +51,7 @@ function Profile(props) {
       <ProfileCard
         passenger={formState}
         onChangeInput={inputChangeHandler}
-        updatePassenger={updatePassenger}
+        updatePassenger={editPassenger}
       />
     </Container>
   );
@@ -66,8 +65,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onInintSinglePassenger: (id) => dispatch(actions.initSinglePassenger(id)),
+    onInintSinglePassenger: (id, passengerData) => dispatch(actions.initSinglePassenger(id, passengerData)),
     onInitPassengers: () => dispatch(actions.initPassengers()),
+    onUpateSinglePassenger: (id, passengerData) => dispatch(actions.updateSinglePassenger(id, passengerData))
   };
 };
 
