@@ -29,9 +29,13 @@ function Profile(props) {
   }, [props.passenger]);
 
   const inputChangeHandler = (event) => {
-    const { id, value } = event.target;
-    setFormState({ ...formState, [id]: value });
-  };
+      const { id, value } = event.target;
+      // setFormState({ ...formState, [id]: value });
+      setFormState(prevState => {
+        return {...prevState, [id]: value}
+    })
+  }
+  
 
   const updatePassenger = () => {
     console.log("like update api calls", { id, formState });
